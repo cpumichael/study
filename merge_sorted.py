@@ -30,16 +30,13 @@ def merge(a, b):
         if a[i] < b[j]:
             ret.append(a[i])
             i += 1
-            continue
-        if a[i] == b[j]:
+        elif b[j] < a[i]:
+            ret.append(b[j])
+            j += 1
+        elif a[i] == b[j]:
             ret.append(a[i])
             i += 1
             j += 1
-            continue
-        if b[j] < a[i]:
-            ret.append(b[j])
-            j += 1
-            continue
 
     while i < a_end:
         ret.append(a[i])
@@ -55,6 +52,12 @@ if __name__ == '__main__':
 
     a = [0,0,0,1,2,3]
     b = [2,5,6]
+
+    print(merge(a, b))
+
+
+    a = [-404, 0, 1, 2, 3]
+    b = [2, 5, 6, 99]
 
     print(merge(a, b))
 
