@@ -37,7 +37,7 @@ def long_ss(s, k):
 
 if __name__ == '__main__':
     from collections import namedtuple
-    Test = namedtuple('tests', ['str', 'k'])
+    Test = namedtuple('Test', ['str', 'k'])
     tests = [
         Test('aa', 1),
         Test('eceba', 2),
