@@ -14,10 +14,9 @@ def atoi(s):
       a.__delitem__(-1)
 
    mapping = {c:i for i,c in enumerate('0123456789')}
-
    negative = False
-
    digits = []
+
    for i, c in enumerate(a):
       if c == '-':
          negative = True
@@ -39,22 +38,23 @@ def atoi(s):
    
    return ret
 
-samples = [
-   '  6789 ',
-   '   42 ',
-   '   -42 ',
-   ' --1 ',
-   'alsdfkj',
-   '42 a',
-   '4',
-]
+if __name__ == '__main__':
+   samples = [
+      '  6789 ',
+      '   42 ',
+      '   -42 ',
+      ' --1 ',
+      'alsdfkj',
+      '42 a',
+      '4',
+   ]
 
-for i, s in enumerate(samples):
-   try:
-      print('Inp {}: <<{}>>'.format(i, s.__repr__()))
-      out = atoi(s)
-      print('Out {}: <<{}>>'.format(i, out.__repr__()))
-   except RuntimeError as e:
-      print(s, e)
+   for i, s in enumerate(samples):
+      try:
+         print('Inp {}: <<{}>>'.format(i, s.__repr__()))
+         out = atoi(s)
+         print('Out {}: <<{}>>'.format(i, out.__repr__()))
+      except RuntimeError as e:
+         print(s, e)
 
 # vim: ai sw=3 ts=3 showmatch et
