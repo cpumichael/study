@@ -32,7 +32,6 @@ def atoi(s):
 
    ret = 0
    for i, d in enumerate(reversed(digits)):
-      print(f'ret = {ret}', file=sys.stderr)
       ret += (d * 10**i)
 
    if negative:
