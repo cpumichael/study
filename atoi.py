@@ -18,11 +18,9 @@ def atoi(s):
    digits = []
 
    for i, c in enumerate(a):
-      if c == '-':
+      if not negative and c == '-':
          negative = True
          continue
-      if negative and c == '-': # undefined
-         break
       tmp = mapping.get(c) # returns int(c) or None
       if tmp is not None:
          digits.append(tmp)
@@ -44,6 +42,7 @@ if __name__ == '__main__':
       '   42 ',
       '   -42 ',
       ' --1 ',
+      '  ----607',
       'alsdfkj',
       '42 a',
       '4',
