@@ -24,11 +24,15 @@ A solution set is:
 import itertools
 
 def sum3(a):
+    ret = set()
     for i in itertools.combinations(a, 3):
         if sum(i) == 0:
-            print(i)
+            x = sorted(i)
+            ret.add(str(x))
+    ret = [eval(i) for i in ret]
+    return ret
 
 if __name__ == '__main__':
-    sum3([-1, 0, 1, 2, -1, -4])
+    print(sum3([-1, 0, 1, 2, -1, -4]))
 
 # vim: ai sw=4 ts=4 et showmatch
