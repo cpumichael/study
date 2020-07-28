@@ -21,7 +21,7 @@ def rmdups(a):
 
 if __name__ == '__main__':
     def test(a):
-        print(a)
+        print(a, '= ', end='')
         rmdups(a)
         print(a)
 
