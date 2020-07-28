@@ -69,16 +69,26 @@ def r2i(r):
     while r:
         x = r[:2]
         if x in dvals:
-            tot += dvals(x)
+            tot += dvals[x]
             r = r[2:]
             continue
 
         x = r[:1]
         if x in vals:
-            tot += vals(x)
+            tot += vals[x]
             r = r[1:]
             continue
         
-        raise ValueError('not a valid roman numberal')
+        raise ValueError('not a valid roman numeral ' + r)
+
+    return tot
     
+
+if __name__ == '__main__':
+    def test(a):
+        print(a, r2i(a))
+    
+    for i in 'v iv MCMXCIV x'.split():
+        test(i)
+
 # vim: ai sw=4 ts=4 et showmatch
