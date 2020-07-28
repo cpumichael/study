@@ -43,9 +43,35 @@ use ord('c') to get numeric value
 
 '''
 
+__O9 = ord('9')
+
+def m2c(a, b):
+    '''returns mul and carry of a and b'''
+    x = ord(a) - __O9
+    y = ord(b) - __O9
+    return divmod(x * y, 10)
+
 def mul2strs(a, b):
-    a = ''.join(reversed(list(a)))
-    b = ''.join(reversed(list(b)))
+    '''does not check for input, assumes all digits'''
+    a = reversed(list(a))
+    b = reversed(list(b))
+
+    tot = 0
+    tens_place = 0
+    for c1 in a:
+        c_prev = 0
+        for c2 in b:
+            c, v = m2c(c1, c2)
+            tot += v + c_prev
+            c_prev = c
+        tot += c_prev
+        tot *= 10**tens_place
+        tens_place += 1
+
+    return f'{tot}'
+
+if __name__ == '__main__':
+    print(mul2strs('123', '456'))
 
 # vim: ai sw=4 ts=4 et showmatch
 
