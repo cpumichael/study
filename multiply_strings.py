@@ -77,5 +77,6 @@ def mul2strs(a, b):
 if __name__ == '__main__':
     print(mul2strs('123', '456'))
     print(mul2strs('999', '888'))
+    print(mul2strs('9999', '999'))
 
 # vim: ai sw=4 ts=4 et showmatch
