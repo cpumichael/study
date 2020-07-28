@@ -79,5 +79,3 @@ if __name__ == '__main__':
     print(mul2strs('999', '888'))
 
 # vim: ai sw=4 ts=4 et showmatch
-
-
