@@ -15,6 +15,7 @@ Output:
 '''
 
 def group_anagrams(a):
+    '''can be done recursive, this is iterative'''
     ret = []
     i = 0
     while i < len(a):
