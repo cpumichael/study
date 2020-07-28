@@ -18,22 +18,22 @@ def group_anagrams(a):
     ret = []
     i = 0
     while i < len(a):
-        print('i=',i)
         ana = set(a[i])
-        ret.append(a[i])
-        print(a[i])
+        ret.append([])
+        ret[i].append(a[i])
         j = i + 1
         while j < len(a):
             if set(a[j]) == ana:
-                print(ret)
-                #ret[i].append(a[j])
-                print(a[j])
+                ret[i].append(a[j])
                 del a[j]
             else:
                 j += 1
         i += 1
+
+    return ret
    
-group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+if __name__ == '__main__':
+    print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 
 
 # vim: ai sw=4 ts=4 et showmatch
