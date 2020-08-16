@@ -24,7 +24,7 @@ class LL:
       curr = self.head
       while curr.next is not None:
         curr = curr.next
-        curr.next = Node(value)
+      curr.next = Node(value)
 
   def insert(self, value):
     '''put value at top of list'''
@@ -69,6 +69,7 @@ class LL:
     curr = self.head
     while curr.next is not None:
       n += 1
+      curr = curr.next
     return 'LL({:d} items)'.format(n)
 
 # vim: ai sw=2 ts=2 et showmatch :
