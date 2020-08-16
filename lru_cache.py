@@ -8,14 +8,17 @@ class LRUCache:
     # O(n) in the middle, why????
     self._deque = deque([], size)
     self._dict = dict() # O(1) lookup
+    self.misses = 0
     # self.lock = .... needs to be threadsafe
 
   def get(self, val):
     # lock the LRU...
     if not val in self._dict:
+      self.misses += 1
       raise RuntimeError('not found')
     self._deque.remove(val)
     self._deque.appendleft(val)
+    return val
     # unlock LRU
 
   def put(self, val):
@@ -38,22 +41,25 @@ class LRUCache:
 
   def stats(self):
     '''prints contents and stats of hits'''
+    # lock
     for i in self._deque:
       print(i, '->', self._dict[i])
+    # unlock
 
 if __name__ == '__main__':
   import random
   lru = LRUCache(5)
   for i in range(100):
     lru.put(random.randint(0, 9))
+
   lru.stats()
 
-  print('Finding 0->19')
-  for i in range(20):
+  print('Finding -3->12')
+  for i in range(-3, 12):
     try:
       val = lru.get(i)
       print(val, "Found")
     except RuntimeError:
-      print(i, "Not Found!")
+      print(i, "Not Found!") # wtf??? Why are lower values None
     
 # vim: ai sw=2 ts=2 et showmatch
