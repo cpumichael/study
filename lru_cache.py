@@ -9,6 +9,7 @@ class LRUCache:
     self._deque = deque([], size)
     self._dict = dict() # O(1) lookup
     self.misses = 0
+    self.hits = 0
     # self.lock = .... needs to be threadsafe
 
   def get(self, val):
@@ -18,6 +19,7 @@ class LRUCache:
       raise RuntimeError('not found') # other option is to return None
     self._deque.remove(val)
     self._deque.appendleft(val)
+    self.hits += 1
     return val
     # unlock LRU
 
@@ -27,6 +29,7 @@ class LRUCache:
       self._deque.remove(val)
       self._deque.appendleft(val)
       self._dict[val] += 1 # increment the hitcount
+      self.hits += 1
     else:
       if len(self._deque) == self._deque.maxlen:
         # full, so adjust LRU
@@ -43,6 +46,12 @@ class LRUCache:
     '''prints contents and stats of hits'''
     # lock
     print('misses =', self.misses)
+    print('hits =', self.hits)
+    if self.misses != 0:
+      ratio = '{:.2f}'.format(self.hits / self.misses)
+    else:
+      ratio = '∞'
+    print(f'ratio = {ratio}')
     for i in self._deque:
       print(i, '->', self._dict[i])
     # unlock
