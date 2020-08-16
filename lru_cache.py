@@ -15,7 +15,7 @@ class LRUCache:
     # lock the LRU...
     if not val in self._dict:
       self.misses += 1
-      raise RuntimeError('not found')
+      raise RuntimeError('not found') # other option is to return None
     self._deque.remove(val)
     self._deque.appendleft(val)
     return val
@@ -42,6 +42,7 @@ class LRUCache:
   def stats(self):
     '''prints contents and stats of hits'''
     # lock
+    print('misses =', self.misses)
     for i in self._deque:
       print(i, '->', self._dict[i])
     # unlock
@@ -62,4 +63,6 @@ if __name__ == '__main__':
     except RuntimeError:
       print(i, "Not Found!") # wtf??? Why are lower values None
     
+  lru.stats()
+
 # vim: ai sw=2 ts=2 et showmatch
