@@ -5,7 +5,7 @@ class LRUCache:
   def __init__(self, size):
     # should really be a linked list, python deques are a bit odd
     # because near O(1) insertions and deletions at the top/bottom
-    # O(n) in the middle, why????
+    # O(n) in the middle
     self._deque = deque([], size)
     self._dict = dict() # O(1) lookup
     self.misses = 0
@@ -28,7 +28,7 @@ class LRUCache:
     if val in self._dict:
       self._deque.remove(val)
       self._deque.appendleft(val)
-      self._dict[val] += 1 # increment the hitcount
+      self._dict[val] += 1 # increment the hitcount of this value
       self.hits += 1
     else:
       if len(self._deque) == self._deque.maxlen:
@@ -70,7 +70,7 @@ if __name__ == '__main__':
       val = lru.get(i)
       print(val, "Found")
     except RuntimeError:
-      print(i, "Not Found!") # wtf??? Why are lower values None
+      print(i, "Not Found!")
     
   lru.stats()
 
