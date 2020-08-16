@@ -47,5 +47,13 @@ if __name__ == '__main__':
   for i in range(100):
     lru.put(random.randint(0, 9))
   lru.stats()
+
+  print('Finding 0->19')
+  for i in range(20):
+    try:
+      val = lru.get(i)
+      print(val, "Found")
+    except RuntimeError:
+      print(i, "Not Found!")
     
 # vim: ai sw=2 ts=2 et showmatch
