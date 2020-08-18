@@ -3,8 +3,6 @@
 singly linked list
 '''
 
-from collections import namedtuple
-
 class Node:
   def __init__(self, value):
     self.value = value
